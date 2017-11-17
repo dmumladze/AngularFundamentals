@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 
+import { IEvent } from './services/index'
+
 @Component({
     selector: 'event-thumbnail',
     template: `
@@ -35,7 +37,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
     `]
 })
 export class EventThumbnailComponent {
-    @Input()  event: any
+    @Input()  event: IEvent
     @Output() eventClick = new EventEmitter()
 
     handleClickMe() {

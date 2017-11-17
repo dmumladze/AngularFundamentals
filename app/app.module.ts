@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
-
-import { EventsAppComponent } from './events-app.component'
-import { EventsListComponent } from './events/events-list.component'
-import { EventThumbnailComponent } from './events/event-thumbnail.component'
-import { NavBarComponent } from './nav/navbar.component'
-
-import { EventService } from './events/services/EventService'
-import { ToastrService } from './common/toastr.service'
-
-import { EventDetailsComponent } from './events/event-details/event-details.component'
-
-import { CreateEventComponent } from './events/create-event.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutes } from './routes'
+import { NavBarComponent } from './nav/index'
+import { ToastrService } from './common/index'
+import { Error404Component } from './errors/index'
+
+import { AuthService } from './user/auth.service'
+
+import { 
+    EventsAppComponent,
+    EventsListComponent,
+    EventThumbnailComponent,
+    EventService,
+    EventDetailsComponent,
+    CreateEventComponent,
+    EventRouteActivator } from './events/index'
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule, 
+        ReactiveFormsModule,       
         RouterModule.forRoot(AppRoutes, { enableTracing:true })
     ],
     declarations: [
@@ -27,14 +32,28 @@ import { AppRoutes } from './routes'
         EventThumbnailComponent,
         NavBarComponent,
         EventDetailsComponent,
-        CreateEventComponent
+        CreateEventComponent,
+        Error404Component
     ],
     providers: [
         EventService, 
-        ToastrService
+        ToastrService,
+        EventRouteActivator,
+        AuthService,
+        {
+            provide: 'canDeactivateCreateEvent',
+            useValue: checkDirtyState
+        }
     ],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule {
 
+}
+
+function checkDirtyState(component:CreateEventComponent) {
+    if (component.isDirty)
+        return window.confirm('You haven\'t saved this event, do you really want to cancel?')
+    
+    return true
 }
