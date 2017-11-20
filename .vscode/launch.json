@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Chrome debugger",
+            "type": "chrome",
+            "request": "launch",            
+            "url": "http://localhost:8808",
+            "sourceMaps": true,
+            "trace": true,            
+            "webRoot": "${workspaceRoot}",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
+            }
+        }
+    ]
+}

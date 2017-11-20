@@ -20,15 +20,20 @@ export class EventService {
         return subject
     }
 
-    getEvent(id:number): IEvent {
+    getEvent(id: number): IEvent {
         return EventData.find(e => e.id === id)
     } 
     
-    saveEvent(event:IEvent) {
+    saveEvent(event: IEvent) {
         event.id = this.idSequence++
         event.sessions = []
         EventData.push(event)
     }
+
+    updateEvent(event: IEvent) {
+        let index = EventData.findIndex(e => e.id == event.id)
+        EventData[index] = event
+    }    
 }
 
 const EventData: IEvent[] = [

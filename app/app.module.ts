@@ -5,9 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutes } from './routes'
 import { NavBarComponent } from './nav/index'
-import { ToastrService } from './common/index'
 import { Error404Component } from './errors/index'
 
+import { DurationPipe } from './events/shared/index'
+
+import { ToastrService, CollapsibleWellComponent } from './common/index'
 import { AuthService } from './user/auth.service'
 
 import { 
@@ -17,7 +19,9 @@ import {
     EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventRouteActivator } from './events/index'
+    EventRouteActivator,
+    CreateSessionComponent,
+    SessionListComponent } from './events/index'
 
 @NgModule({
     imports: [
@@ -27,13 +31,17 @@ import {
         RouterModule.forRoot(AppRoutes, { enableTracing:true })
     ],
     declarations: [
+        Error404Component,
         EventsAppComponent,
         EventsListComponent,
         EventThumbnailComponent,
         NavBarComponent,
         EventDetailsComponent,
         CreateEventComponent,
-        Error404Component
+        CreateSessionComponent,
+        SessionListComponent,
+        CollapsibleWellComponent,
+        DurationPipe   
     ],
     providers: [
         EventService, 

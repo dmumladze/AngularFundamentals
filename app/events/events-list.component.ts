@@ -20,7 +20,7 @@ export class EventsListComponent implements OnInit {
     
     events: IEvent[]
     
-    constructor(private eventService:EventService, private toastr:ToastrService) {             
+    constructor(private eventService: EventService, private toastr: ToastrService) {             
     } 
     
     ngOnInit() {
