@@ -28,19 +28,21 @@
       <div class="col-md-2">
         <h3 style="margin:0">Sessions</h3>
       </div>
-      <div class="col-md-7" style="margin-bottom:10px">
-        <div [hidden]="addModel" style="padding-right:10px">
-            <button class="btn btn-default" [class.active]="sortBy==='name'" (click)="sortBy='name'">By Name</button>
-            <button class="btn btn-default" [class.active]="sortBy==='votes'" (click)="sortBy='votes'">By Votes</button>
-        </div>
-        <div [hidden]="addMode">
+      <div class="col-md-8" style="margin-bottom:10px" [hidden]="addMode">
+        <span style="padding-right:15px">
+          Sort by
+          <button class="btn btn-default" [class.active]="sortBy==='name'" (click)="sortBy='name'">By Name</button>
+          <button class="btn btn-default" [class.active]="sortBy==='votes'" (click)="sortBy='votes'">By Votes</button>
+        </span>
+        <span>
+          Filter by
           <button class="btn btn-default" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
           <button class="btn btn-default" [class.active]="filterBy==='beginner'" (click)="filterBy='beginner'">Beginner</button>
           <button class="btn btn-default" [class.active]="filterBy==='intermediate'" (click)="filterBy='intermediate'">Intermediate</button>
           <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="filterBy='advanced'">Advanced</button>
-        </div>
+        </span>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2" [hidden]="addMode">
         <a (click)="addSession()">Add Session</a>
       </div>
     </div>

@@ -5,7 +5,7 @@
             "name": "Chrome debugger",
             "type": "chrome",
             "request": "launch",            
-            "url": "http://localhost:8808",
+            "url": "http://localhost:8808/events",
             "sourceMaps": true,
             "trace": true,            
             "webRoot": "${workspaceRoot}",

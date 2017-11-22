@@ -37,12 +37,10 @@ export class SessionListComponent implements OnChanges {
     }
 
     sortSessions() {
-        var sortByFn = this.sortByName;
-
-        if (this.sortBy === 'votes')
-            sortByFn = this.sortByVotes        
-        
-        this.visibleSession.sort(sortByFn)
+        if (this.sortBy === 'name')
+            this.visibleSession.sort(this.sortByName)  
+        else 
+            this.visibleSession.sort(this.sortByVotes)                  
     }
 
     private sortByName(s1: ISession, s2: ISession): number {
