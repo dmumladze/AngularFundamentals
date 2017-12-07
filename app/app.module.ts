@@ -9,7 +9,14 @@ import { Error404Component } from './errors/index'
 
 import { DurationPipe } from './events/shared/index'
 
-import { TOASTR_TOKEN, IToastr, CollapsibleWellComponent } from './common/index'
+import { 
+    TOASTR_TOKEN, 
+    IToastr, 
+    CollapsibleWellComponent, 
+    JQ_TOKEN,
+    SimpleModalComponent,
+    ModalTriggerDirective } from './common/index'
+
 import { AuthService } from './user/auth.service'
 
 import { 
@@ -24,6 +31,7 @@ import {
     SessionListComponent } from './events/index'
 
 declare let toastr: IToastr
+declare let jQuery: Object
 
 @NgModule({
     imports: [
@@ -43,13 +51,16 @@ declare let toastr: IToastr
         CreateSessionComponent,
         SessionListComponent,
         CollapsibleWellComponent,
-        DurationPipe   
+        DurationPipe,
+        SimpleModalComponent,
+        ModalTriggerDirective 
     ],
     providers: [
         EventService, 
         EventRouteActivator,
         { provide: AuthService, useClass: AuthService },
         { provide: TOASTR_TOKEN, useValue: toastr }, 
+        { provide: JQ_TOKEN, useValue: jQuery },
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ],
     bootstrap: [EventsAppComponent]
