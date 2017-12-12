@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core'
+import { Http } from '@angular/http'
 
 import { Subject, Observable } from 'rxjs/Rx'
 
@@ -8,6 +9,9 @@ import { IEvent, ISession } from './event.model'
 export class EventService {
 
     idSequence:number = 999
+
+    constructor(private http: Http) {        
+    }
 
     getEvents(): Observable<IEvent[]> {
         let subject = new Subject<IEvent[]>()

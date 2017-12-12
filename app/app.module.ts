@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { HttpModule } from '@angular/http'
+
 import { AppRoutes } from './routes'
 import { NavBarComponent } from './nav/index'
 import { Error404Component } from './errors/index'
@@ -28,7 +30,9 @@ import {
     CreateEventComponent,
     EventRouteActivator,
     CreateSessionComponent,
-    SessionListComponent } from './events/index'
+    SessionListComponent,
+    UpvoteComponent,
+    LocationValidator } from './events/index'
 
 declare let toastr: IToastr
 declare let jQuery: Object
@@ -37,6 +41,7 @@ declare let jQuery: Object
     imports: [
         BrowserModule,
         FormsModule, 
+        HttpModule,
         ReactiveFormsModule,       
         RouterModule.forRoot(AppRoutes, { enableTracing:true })
     ],
@@ -53,7 +58,9 @@ declare let jQuery: Object
         CollapsibleWellComponent,
         DurationPipe,
         SimpleModalComponent,
-        ModalTriggerDirective 
+        UpvoteComponent,
+        ModalTriggerDirective,
+        LocationValidator
     ],
     providers: [
         EventService, 
@@ -69,7 +76,7 @@ export class AppModule {
 
 }
 
-function checkDirtyState(component:CreateEventComponent) {
+function checkDirtyState(component: CreateEventComponent) {
     if (component.isDirty)
         return window.confirm('You haven\'t saved this event, do you really want to cancel?')
     

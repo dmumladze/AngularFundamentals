@@ -5,15 +5,11 @@ import { Component } from '@angular/core'
     <h1 class="errorMessage">404 - Not Found</h1>
   `,
   styles: [`
-    .errorMessage { 
-      margin-top:150px; 
-      font-size: 170px;
-      text-align: center; 
-    }`]
+    .errorMessage { margin-top:150px; font-size: 170px; text-align: center; }`]
 })
 export class Error404Component{
-  constructor() {
 
+  constructor() {
   }
 
 }

@@ -5,6 +5,7 @@ import {
     SimpleChanges } from '@angular/core'
 
 import { ISession } from '../services/event.model'
+import { AuthService }  from '../../user/auth.service'
 
 @Component({
     selector: 'session-list',
@@ -17,6 +18,9 @@ export class SessionListComponent implements OnChanges {
     @Input() sortBy: string
     
     visibleSession: ISession[] = []
+
+    constructor(private authService: AuthService) {        
+    }
 
     ngOnChanges(changes: SimpleChanges) {
         if (!this.sessions)
@@ -54,6 +58,18 @@ export class SessionListComponent implements OnChanges {
 
     private sortByVotes(s1: ISession, s2: ISession): number {
         return s1.voters.length - s2.voters.length
+    }
+
+    toggleVote(session: ISession) {
+        if (this.userHasVoted(session)) {
+            session.voters = session.voters.filter(v => v !== this.authService.currentUser.userName)
+        } else {
+            session.voters.push(this.authService.currentUser.userName)
+        }
+    }
+
+    userHasVoted(session: ISession) {
+        return session.voters.some(v => v === this.authService.currentUser.userName)
     }
 
 }

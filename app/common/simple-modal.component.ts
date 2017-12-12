@@ -32,7 +32,7 @@ export class SimpleModalComponent {
     @Input() closeOnBodyClick: boolean
     @ViewChild('modalcontainer') containerEl: ElementRef
 
-    constructor(@Inject(JQ_TOKEN) private $: any) {        
+    constructor(@Inject(JQ_TOKEN) private $: any) {    
     }
 
     closeModal() {

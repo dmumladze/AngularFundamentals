@@ -7,3 +7,5 @@ export * from './events-list.component'
 
 export * from './services/index'
 export * from './event-details/index'
+
+export * from './location.validator.directive'
