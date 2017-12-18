@@ -3,6 +3,5 @@ typings
 /app/**/*.js
 /app/**/*.map
 .vscode/chrome
-package-lock.json
 
 

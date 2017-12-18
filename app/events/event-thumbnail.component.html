@@ -10,7 +10,7 @@
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
         <span *ngSwitchDefault>(Normal Start)</span>
     </div>
-    <div>Price: {{event.price | currency:'USD':true}}</div>
+    <div>Price: {{event.price | currency:'USD':'symbol'}}</div>
     <div [hidden]="!event?.location">
         <span>Location: {{event.location?.address}}</span>
         <span class="pad-left">{{event.location?.city}}, {{event.location?.country}}</span>
@@ -18,5 +18,4 @@
     <div *ngIf="event?.onlineUrl">
         Online URL: {{event?.onlineUrl}}
     </div>
-    <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>
 </div> 
