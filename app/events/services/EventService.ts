@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { Http } from '@angular/http'
+import { HttpClient } from '@angular/common/http'
 
 import { Subject, Observable } from 'rxjs/Rx'
 
@@ -10,7 +10,7 @@ export class EventService {
 
     idSequence:number = 999
 
-    constructor(private http: Http) {        
+    constructor(private http: HttpClient) {        
     }
 
     getEvents(): Observable<IEvent[]> {
