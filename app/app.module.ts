@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { HttpModule } from '@angular/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutes } from './routes'
 import { NavBarComponent } from './nav/index'
@@ -41,7 +41,7 @@ declare let jQuery: Object
     imports: [
         BrowserModule,
         FormsModule, 
-        HttpModule,
+        HttpClientModule,
         ReactiveFormsModule,       
         RouterModule.forRoot(AppRoutes, { enableTracing:true })
     ],

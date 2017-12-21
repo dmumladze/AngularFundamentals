@@ -28,10 +28,10 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "concurrently": "3.2.0",
-    "typescript": "2.6.2",
     "@types/core-js": "0.9.34",
-    "@types/node": "6.0.46"
+    "@types/node": "6.0.46",
+    "concurrently": "3.2.0",
+    "typescript": "^2.4.2"
   },
   "repository": {}
 }
