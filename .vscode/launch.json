@@ -1,8 +1,14 @@
 {
-    "version": "0.2.0",
+    /* 
+     * you must install extension "Debugger for Chrome"
+     * https://github.com/Microsoft/vscode-chrome-debug 
+     */
+
+    "version": "2.0.0",
     "configurations": [
         {
-            "name": "Chrome debugger",
+            //launches chrome.exe --remote-debugging-port=9222
+            "name": "Debug with Chrome",
             "type": "chrome",
             "request": "launch",            
             "url": "http://localhost:8808/events",
@@ -13,6 +19,18 @@
             "sourceMapPathOverrides": {
                 "webpack:///C:*":"C:/*"
             }
+        },
+        {
+            //you must be running "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+            "name": "Attach to Chrome",
+            "type": "chrome",
+            "request": "attach",
+            "sourceMaps": true,
+            "port": 9222,
+            "webRoot": "${workspaceRoot}",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
+            }            
         }
     ]
 }

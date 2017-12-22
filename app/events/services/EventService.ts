@@ -15,18 +15,11 @@ export class EventService {
     }
 
     getEvents(): Observable<IEvent[]> {
-        let subject = new Subject<IEvent[]>()
-
-        window.setTimeout(() => {
-            subject.next(EventData)
-            subject.complete()
-        }, 25)
-
-        return subject
+        return this.http.get<IEvent[]>('/api/events')
     }
 
-    getEvent(id: number): IEvent {
-        return EventData.find(e => e.id === id)
+    getEvent(id: number): Observable<IEvent> {
+        return this.http.get<IEvent>('/api/events/', { params: { 'id': id.toString() }})
     } 
     
     saveEvent(event: IEvent) {
