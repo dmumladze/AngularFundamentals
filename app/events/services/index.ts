@@ -1,3 +1,4 @@
 
 export * from './event.model'
-export * from './EventService'
+export * from './event.service'
+export * from './voter.service'

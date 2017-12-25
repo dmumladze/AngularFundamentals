@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http'
 
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
@@ -19,40 +19,17 @@ export class EventService {
     }
 
     getEvent(id: number): Observable<IEvent> {
-        return this.http.get<IEvent>('/api/events/', { params: { 'id': id.toString() }})
+        //return this.http.get<IEvent>('/api/events/', { params: { 'id': id.toString() }})
+        return this.http.get<IEvent>('/api/events/' + id.toString())
     } 
     
-    saveEvent(event: IEvent) {
-        event.id = this.idSequence++
-        event.sessions = []
-        EventData.push(event)
+    saveEvent(event: IEvent): Observable<IEvent> {        
+        return this.http.post<IEvent>('/api/events', event)
     }
 
-    updateEvent(event: IEvent) {
-        let index = EventData.findIndex(e => e.id == event.id)
-        EventData[index] = event
-    }  
-    
     searchSessions(searchTerm: string) {
         let term = searchTerm.toLocaleLowerCase()
-        let results: ISession[] = []
-
-        EventData.forEach(e => {
-            let sessions = e.sessions.filter(s => s.name.toLocaleLowerCase().indexOf(term) > 1)
-            sessions = sessions.map((s:any) => {
-                s.eventId = e.id
-                return s
-            })
-            results = results.concat(sessions)
-        })
-
-        let emitter = new EventEmitter(true)
-
-        setTimeout(() => {
-            emitter.emit(results)
-        }, 100)
-
-        return emitter
+        return this.http.get<any>('/api/sessions/search?search=' + term)
     }
 }
 

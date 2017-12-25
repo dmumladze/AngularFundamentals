@@ -7,7 +7,7 @@ import { EventService } from '../events/services/index'
 import { IEvent } from './index';
 
 @Injectable()
-export class EventListResolver implements Resolve<any> {
+export class EventListResolver implements Resolve<IEvent[]> {
 
     constructor(private eventService: EventService) {
     }

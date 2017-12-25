@@ -18,8 +18,7 @@ export class ProfileComponent implements OnInit {
     lastName:  FormControl
     profileForm: FormGroup    
 
-    constructor(private router:Router, 
-                private authService:AuthService,
+    constructor(private router: Router, private authService: AuthService,
                 @Inject(TOASTR_TOKEN) private toastr: IToastr) {    
     }
 
@@ -54,6 +53,12 @@ export class ProfileComponent implements OnInit {
 
     cancel() {
         this.router.navigate(['events'])
+    }
+
+    logout() {
+        this.authService.logout().subscribe(x => {
+            this.router.navigate(['/user/login'])
+        })
     }
 
 }
