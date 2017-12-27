@@ -17,12 +17,12 @@ export class AuthService {
     }
     
     loginUser(userName: string, password: string): Observable<IUser> {
-        let loginInfo = { username: userName.toLocaleLowerCase(), password: password }
+        let loginInfo = { userName: userName.toLocaleLowerCase(), password: password }
 
-        return this.http.post('/api/login', loginInfo).do(
+        return this.http.post('/api/user/login', loginInfo).do(
             (data: any) => {
                 if (data) {
-                    this.currentUser = <IUser>data.user            
+                    this.currentUser = <IUser>data            
                 }
             }
         )
@@ -32,7 +32,7 @@ export class AuthService {
         this.currentUser.firstName = firstName
         this.currentUser.lastName  = lastName
 
-        this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser).subscribe()
+        this.http.put(`/api/user/${this.currentUser.id}`, this.currentUser).subscribe()
     }
 
     isAuthenticated() {
@@ -40,7 +40,7 @@ export class AuthService {
     }
 
     checkAuthentocationStatus() {
-        return this.http.get('/api/currentIdentity').subscribe(
+        return this.http.get('/api/user/currentIdentity').subscribe(
             (data: any) => {
                 if (data) {
                     let user = <IUser>data
@@ -56,6 +56,6 @@ export class AuthService {
     
     logout(): Observable<any> {
         this.currentUser = undefined
-        return this.http.post('/api/logout', null)
+        return this.http.post('/api/user/logout', null)
     }
 }

@@ -16,7 +16,7 @@ export class LoginComponent {
 
     loginInvalid: boolean
 
-    constructor(private router:Router, private authService:AuthService) {        
+    constructor(private router: Router, private authService: AuthService) {        
     }
 
     login(form) {

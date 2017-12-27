@@ -12,10 +12,10 @@ import { Error404Component } from './errors/index'
 import { DurationPipe } from './events/shared/index'
 
 import { 
-    //TOASTR_TOKEN, 
-    //IToastr, 
+    TOASTR_TOKEN, 
+    IToastr, 
     CollapsibleWellComponent, 
-    //JQ_TOKEN,
+    JQ_TOKEN,
     SimpleModalComponent,
     ModalTriggerDirective } from './common/index'
 
@@ -36,8 +36,8 @@ import {
     UpvoteComponent,
     LocationValidator } from './events/index'
 
-//declare let toastr: IToastr
-//declare let jQuery: Object
+declare let toastr: IToastr
+declare let jQuery: Object
 
 @NgModule({
     imports: [
@@ -69,21 +69,19 @@ import {
         VoterService,
         EventResolver,
         EventListResolver,
-        { provide: AuthService, useClass: AuthService }//,
-        //{ provide: TOASTR_TOKEN, useValue: toastr }, 
-        //{ provide: JQ_TOKEN, useValue: jQuery },
-        //{ provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+        { provide: AuthService, useClass: AuthService },
+        { provide: TOASTR_TOKEN, useValue: toastr }, 
+        { provide: JQ_TOKEN, useValue: jQuery },
+        { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule {
 }
-
-/*
+ 
 function checkDirtyState(component: CreateEventComponent) {
     if (component.isDirty) {
         return window.confirm('You haven\'t saved this event, do you really want to cancel?')
     }
     return true
 }
-*/

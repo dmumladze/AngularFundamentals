@@ -11,7 +11,7 @@ import {
     CreateSessionComponent } from './events/index'
 
 export const AppRoutes: Routes = [
-    { path: 'events/new', component: CreateEventComponent /*, canDeactivate: ['canDeactivateCreateEvent']*/ },
+    { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
     { path: 'events', component: EventsListComponent, resolve: {events: EventListResolver} },
     { path: 'events/:id', component: EventDetailsComponent, resolve: {event: EventResolver} },  
     { path: '404', component: Error404Component },  

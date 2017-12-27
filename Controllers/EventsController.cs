@@ -23,21 +23,34 @@ namespace ng4play.Controllers
             var json = System.IO.File.ReadAllText(Path.Combine(Startup.ContentRootPath, "events.json"));
             EventData = JsonConvert.DeserializeObject<List<Event>>(json);
         }
-        // GET api/values
+
         [HttpGet]
         public IEnumerable<Event> Get()
         {            
             return EventData;
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public Event Get(int id)
         {
             return EventData.Find(e => e.id == id);
         }
 
-        // POST api/values
+        [HttpGet("sessions/search/{term?}")]
+        public IEnumerable<Session> SearchSessions(string term) 
+        {
+            var foundSessions = new List<Session>();
+
+            EventData.ForEach(e => {
+                e.sessions?.ForEach(s => {                                            
+                    if (s.name != null && s.name.ToLower().Contains(term))
+                        foundSessions.Add(s);
+                });
+            });
+
+            return foundSessions;
+        }        
+
         [HttpPost]
         public void Post([FromBody]Event value)
         {
@@ -46,7 +59,6 @@ namespace ng4play.Controllers
             EventData.Add(value);
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Event value)
         {
@@ -58,14 +70,51 @@ namespace ng4play.Controllers
             }
         }
 
-        // DELETE api/values/5
+        [HttpPost("{id}/sessions/{sessionId}/voters/{voterName}")]
+        public void AddVoter(int id, int sessionId, string voterName)
+        {
+            var evnt = EventData.Find(e => e.id == id);
+            if (evnt != null)
+            {
+                var session = evnt.sessions?.Find(s => s.id == sessionId);
+                if (session != null)
+                {
+                    if (session.voters == null)
+                        session.voters = new List<string>();
+
+                    session.voters.Add(voterName);
+                }
+            }
+        }       
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             var ix = EventData.FindIndex(e => e.id == id);
-            if (ix > -1) {
-                EventData.RemoveAt(ix);
-            }            
+            if (ix > -1)
+                EventData.RemoveAt(ix);                     
         }
+
+        [HttpDelete("{id}/sessions/{sessionId}/voters/{voterName}")]
+        public void DeleteVoter(int id, int sessionId, string voterName)
+        {
+            var evnt = EventData.Find(e => e.id == id);
+            if (evnt != null)
+            {
+                var session = evnt.sessions?.Find(s => s.id == sessionId);
+                if (session != null)
+                {
+                    if (session.voters == null)
+                        return;
+
+                    session.voters.Remove(voterName);
+                }
+            }
+        }
+
+        public IActionResult Spa()
+        {
+            return File("~/index.html", "text/html");
+        }         
     }
 }

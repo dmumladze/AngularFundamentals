@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -39,9 +40,21 @@ namespace ng4play
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (context, next) => 
+            { 
+                await next(); 
+                var path = context.Request.Path.Value;
+                if (!path.StartsWith("/api") && !Path.HasExtension(path)) 
+                { 
+                    context.Request.Path = "/index.html"; 
+                    await next(); 
+                } 
+            });             
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvc();
+
+            app.UseMvc();         
         }
     }
 }

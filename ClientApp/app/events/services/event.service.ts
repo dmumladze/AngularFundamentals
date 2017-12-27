@@ -29,6 +29,6 @@ export class EventService {
 
     searchSessions(searchTerm: string) {
         let term = searchTerm.toLocaleLowerCase()
-        return this.http.get<any>('/api/sessions/search?search=' + term)
+        return this.http.get<any>('/api/events/sessions/search?term=' + term)
     }
 }
