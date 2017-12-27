@@ -4,6 +4,7 @@
         "ClientApp/**/*.js.map": true,
         "e2e/*.js": true,
         "e2e/*.js.map": true,        
-        ".vscode/chrome": true
+        ".vscode/chrome": true,
+        "obj": true
     }
 }
