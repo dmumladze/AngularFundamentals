@@ -1,7 +1,10 @@
 {
     "files.exclude": {
-        "app/**/*.js": true,
-        "app/**/*.js.map": true,
-        ".vscode/chrome": true
+        "ClientApp/**/*.js": true,
+        "ClientApp/**/*.js.map": true,
+        "e2e/*.js": true,
+        "e2e/*.js.map": true,        
+        ".vscode/chrome": true,
+        "obj": true
     }
 }

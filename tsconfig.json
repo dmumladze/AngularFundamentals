@@ -1,5 +1,7 @@
-{
+{  
+  "compileOnSave": true,
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -11,9 +13,12 @@
     "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
       "./node_modules/@types/"
-    ]
-  },
-  "compileOnSave": true,
+    ],
+    "lib": [
+      "es2015",
+      "dom"
+    ]       
+  },  
   "exclude": [
     "node_modules/*",
     "**/*-aot.ts"

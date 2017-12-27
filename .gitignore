@@ -1,7 +1,10 @@
 node_modules
+wwwroot
 typings
-/app/**/*.js
-/app/**/*.map
+e2e/*.js
+e2e/*.map
+ClientApp/**/*.js
+ClientApp/**/*.map
 .vscode/chrome
 
 
