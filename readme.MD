@@ -7,5 +7,9 @@ Getting Started
 
 ```
 npm install
-npm start
+
+dotnet restore
+dotnet watch run
+
+ng build --watch
 ```
