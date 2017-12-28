@@ -37,14 +37,20 @@ namespace ng4play.Controllers
         }
 
         [HttpGet("sessions/search/{term?}")]
-        public IEnumerable<Session> SearchSessions(string term) 
+        public IEnumerable<Session> SearchSessions(string term)  
         {
+            if (string.IsNullOrWhiteSpace(term))
+                return null;
+
             var foundSessions = new List<Session>();
 
             EventData.ForEach(e => {
                 e.sessions?.ForEach(s => {                                            
                     if (s.name != null && s.name.ToLower().Contains(term))
+                    {   
+                        s.eventId = e.id;                     
                         foundSessions.Add(s);
+                    }
                 });
             });
 

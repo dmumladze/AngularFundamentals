@@ -80,6 +80,18 @@
             "sourceMapPathOverrides": {
                 "webpack:///C:*":"C:/*"
             }            
-        }
+        },
+        {
+            //you must be running "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+            "name": "Attach to Karma",
+            "type": "chrome",
+            "request": "attach",
+            "sourceMaps": true,
+            "port": 9223,
+            "webRoot": "${workspaceRoot}",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
+            }            
+        }        
     ]
 }

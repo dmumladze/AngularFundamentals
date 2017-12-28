@@ -6,6 +6,7 @@ namespace ng4play.Models
     public class Session
     {
         public int id { get; set; }
+        public int eventId { get; set; }
         public string name { get; set; }
         public string presenter { get; set; }
         public int duration { get; set; }
