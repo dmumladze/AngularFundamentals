@@ -16,6 +16,7 @@ namespace ng4play
     {
         public static string WebRootPath;
         public static string ContentRootPath;
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

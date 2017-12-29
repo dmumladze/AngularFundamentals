@@ -22,7 +22,9 @@ describe('SessionListComponent', () => {
             currentUser: { userName: 'David' }            
         }
         let mockVoterService = {
-            userHasVoted: (session: ISession) => true
+            addVoter: (eventId: number, session: ISession, voterName: string) => {},
+            deleteVoter: (eventId: number, session: ISession, voterName: string) => {},
+            userHasVoted: (session: ISession, voterName: string) => true
         }
 
         TestBed.configureTestingModule({
@@ -40,7 +42,7 @@ describe('SessionListComponent', () => {
             schemas: [                
                 //NO_ERRORS_SCHEMA <--uncomment to enforce shallow testing
             ]
-        }).compileComponents()
+        })
     })
 
     beforeEach(() => {
@@ -54,7 +56,7 @@ describe('SessionListComponent', () => {
         it('should have correct session title', () => {
             component.sessions = <ISession[]>[{ 
                 id: 1,
-                name: 'sesson 1', 
+                name: 'session 1', 
                 level: 'intermediate',
                 abstract: 'abstract',
                 duration: 1,

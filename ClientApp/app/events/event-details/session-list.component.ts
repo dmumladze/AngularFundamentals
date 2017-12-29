@@ -70,7 +70,7 @@ export class SessionListComponent implements OnChanges {
     }
 
     userHasVoted(session: ISession) {
-        return this.voterService.userHasVoter(session, this.authService.currentUser.userName)       
+        return this.voterService.userHasVoted(session, this.authService.currentUser.userName)      
     }
 
 }

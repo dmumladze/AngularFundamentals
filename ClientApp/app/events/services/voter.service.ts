@@ -27,7 +27,7 @@ export class VoterService {
             err => console.error(err))
     }
 
-    userHasVoter(session: ISession, voterName: string): boolean {
+    userHasVoted(session: ISession, voterName: string): boolean {
         return session.voters.some(v => v === voterName)
     }
 

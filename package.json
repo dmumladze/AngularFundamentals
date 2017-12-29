@@ -2,10 +2,8 @@
   "name": "ng2-fundamentals-demo",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run server\" ",
-    "server": "node node_modules/ng2f-server/server.js",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "dotnet-watch": "dotnet build && set ASPNETCORE_ENVIRONMENT=Development && dotnet watch run",
+    "ng-serve": "ng serve --live-reload --proxy-config proxy.config.json"
   },
   "keywords": [],
   "author": "",

@@ -36,8 +36,8 @@ import {
     UpvoteComponent,
     LocationValidator } from './events/index'
 
-declare let toastr: IToastr
-declare let jQuery: Object
+let toastr: IToastr = window['toastr']
+let jQuery: Object  = window['jQuery']
 
 @NgModule({
     imports: [
@@ -47,7 +47,7 @@ declare let jQuery: Object
         ReactiveFormsModule,       
         RouterModule.forRoot(AppRoutes, { enableTracing:true })
     ],
-    declarations: [
+    declarations: [ 
         Error404Component,
         EventsAppComponent,
         EventsListComponent,
@@ -57,7 +57,7 @@ declare let jQuery: Object
         CreateEventComponent,
         CreateSessionComponent,
         SessionListComponent,
-        CollapsibleWellComponent,
+        CollapsibleWellComponent, 
         DurationPipe,
         SimpleModalComponent,
         UpvoteComponent,
