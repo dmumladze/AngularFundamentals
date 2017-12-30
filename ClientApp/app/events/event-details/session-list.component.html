@@ -1,7 +1,7 @@
 <div class="row" *ngFor="let session of visibleSession">
     <div class="col-md-1">
         <div *ngIf="authService.isAuthenticated()">
-            <upvote (vote)="toggleVote(session)" [count]="session.voters.length" [voted]="userHasVoted(session)"></upvote>
+            <upvote-tracker (vote)="toggleVote(session)" [count]="session.voters.length" [voted]="userHasVoted(session)"></upvote-tracker>
         </div>
     </div>
     <div class="col-md-11">
@@ -16,6 +16,6 @@
                 <span>Level: {{session.level}}</span>
                 <p>{{session.abstract}}</p>                
             </div>       
-        </collapsible-well>
+        </collapsible-well>  
     </div>
 </div>

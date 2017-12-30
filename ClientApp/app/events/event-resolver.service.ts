@@ -8,7 +8,7 @@ import { IEvent } from './index';
 @Injectable()
 export class EventResolver implements Resolve<IEvent> {
 
-    constructor(private eventService: EventService) {        
+    constructor(private eventService: EventService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IEvent> {

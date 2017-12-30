@@ -9,7 +9,7 @@ import { IEvent, ISession } from './event.model'
 @Injectable()
 export class EventService {
 
-    idSequence:number = 999
+    idSequence = 999
 
     constructor(private http: HttpClient) {        
     }
@@ -28,7 +28,7 @@ export class EventService {
     }
 
     searchSessions(searchTerm: string) {
-        let term = searchTerm.toLocaleLowerCase()
+        const term = searchTerm.toLocaleLowerCase()
         return this.http.get<any>('/api/events/sessions/search?term=' + term)
     }
 }

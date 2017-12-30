@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/of'
 
 describe('VoterService', () => {
-    let voterService: VoterService
+    let voterService: VoterService 
     let mockHttp
 
     beforeEach(() => {
@@ -14,7 +14,7 @@ describe('VoterService', () => {
 
     describe('deleteVoter', () => {
         it('should remove voter from array', () => {
-            var session = <ISession>{id: 6, voters: ['david', 'toma']}
+            const session = <ISession>{id: 6, voters: ['david', 'toma']}
             mockHttp.delete.and.returnValue(Observable.of(false))
 
             voterService.deleteVoter(3, session, 'david')
@@ -24,7 +24,7 @@ describe('VoterService', () => {
         })           
         
         it('should call http with correct route', () => {
-            var session = <ISession>{id: 6, voters: ['david', 'toma']}
+            const session = <ISession>{id: 6, voters: ['david', 'toma']}
             mockHttp.delete.and.returnValue(Observable.of(false))
 
             voterService.deleteVoter(3, session, 'david')    
@@ -35,7 +35,7 @@ describe('VoterService', () => {
 
     describe('addVoter', () => {
         it('should add voter to array', () => {
-            var session = <ISession>{id: 6, voters: ['david']}
+            const session = <ISession>{id: 6, voters: ['david']}
             mockHttp.post.and.returnValue(Observable.of(false))
 
             voterService.addVoter(3, session, 'toma')
@@ -45,7 +45,7 @@ describe('VoterService', () => {
         })           
         
         it('should call http with correct route', () => {
-            var session = <ISession>{id: 6, voters: ['david', 'toma']}
+            const session = <ISession>{id: 6, voters: ['david', 'toma']}
             mockHttp.post.and.returnValue(Observable.of(false))
 
             voterService.addVoter(3, session, 'david')    

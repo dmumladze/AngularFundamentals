@@ -13,7 +13,6 @@ import { TOASTR_TOKEN, IToastr } from '../common/toastr.service'
   `]
 })
 export class ProfileComponent implements OnInit {
-
     firstName: FormControl
     lastName:  FormControl
     profileForm: FormGroup    
@@ -36,9 +35,9 @@ export class ProfileComponent implements OnInit {
     }
 
     saveProfile(form) {
-        if (!this.profileForm.valid)
+        if (!this.profileForm.valid) {
           return
-
+        }
         this.authService.updateProfile(form.firstName, form.lastName)
         this.toastr.success('Profile saved')
     }
@@ -60,5 +59,4 @@ export class ProfileComponent implements OnInit {
             this.router.navigate(['/user/login'])
         })
     }
-
 }

@@ -4,8 +4,8 @@ import { AuthService } from '../../user/auth.service';
 import { VoterService } from '../services/voter.service'
 
 describe('SessionListComponent', () => {
-    let mockAuthService: AuthService
-    let mockVoterService: VoterService
+    const mockAuthService: AuthService = null
+    const mockVoterService: VoterService = null
     let component: SessionListComponent
 
     beforeEach(() => {

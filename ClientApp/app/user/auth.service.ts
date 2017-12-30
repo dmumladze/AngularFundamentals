@@ -17,7 +17,7 @@ export class AuthService {
     }
     
     loginUser(userName: string, password: string): Observable<IUser> {
-        let loginInfo = { userName: userName.toLocaleLowerCase(), password: password }
+        const loginInfo = { userName: userName.toLocaleLowerCase(), password: password }
 
         return this.http.post('/api/user/login', loginInfo).do(
             (data: any) => {
@@ -43,9 +43,10 @@ export class AuthService {
         return this.http.get('/api/user/currentIdentity').subscribe(
             (data: any) => {
                 if (data) {
-                    let user = <IUser>data
-                    if (!!user.userName) 
-                        this.currentUser = user          
+                    const user = <IUser>data
+                    if (!!user.userName) {
+                        this.currentUser = user 
+                    }         
                 }
             },
             (e: HttpErrorResponse) => {

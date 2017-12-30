@@ -2,19 +2,19 @@ import { Directive } from '@angular/core'
 import { Validator, FormGroup, AbstractControl, NG_VALIDATORS } from '@angular/forms'
 
 @Directive({
-    selector: '[validateLocation]',
+    selector: '[validate-location]',
     providers: [{ provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true }]
 })
 export class LocationValidator implements Validator {
 
     validate(c: AbstractControl): { [key: string]: any; } {
-        let formGroup = <FormGroup>c
-        let root  = <FormGroup>c.root
+        const formGroup = <FormGroup>c
+        const root  = <FormGroup>c.root
 
-        let addressControl = formGroup.controls['address']
-        let cityControl = formGroup.controls['city']
-        let countryControl = formGroup.controls['country']
-        let onlineUrlControl = root.controls['onlineUrl']
+        const addressControl = formGroup.controls['address']
+        const cityControl = formGroup.controls['city']
+        const countryControl = formGroup.controls['country']
+        const onlineUrlControl = root.controls['onlineUrl']
 
         if ((addressControl && addressControl.value
             && cityControl && cityControl.value
@@ -27,5 +27,5 @@ export class LocationValidator implements Validator {
 
     registerOnValidatorChange?(fn: () => void): void {
     }
-    
+
 }

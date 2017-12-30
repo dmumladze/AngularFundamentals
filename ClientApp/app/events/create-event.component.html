@@ -30,7 +30,7 @@
       />
     </div>
 
-    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validate-location>
       <div class="form-group">
         <label for="address">Event Location:</label>
         <em *ngIf="locationGroup?.invalid && locationGroup?.touched">You must either address or online url</em>

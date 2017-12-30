@@ -5,7 +5,7 @@ import {
     SimpleChanges } from '@angular/core'
 
 import { ISession, VoterService } from '../services/index'
-import { AuthService }  from '../../user/auth.service'
+import { AuthService } from '../../user/auth.service'
 
 @Component({
     selector: 'session-list',
@@ -24,9 +24,9 @@ export class SessionListComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (!this.sessions)
+        if (!this.sessions) {
             return
-
+        }
         this.filterSessions()
         this.sortSessions()
     }    
@@ -36,25 +36,27 @@ export class SessionListComponent implements OnChanges {
             this.visibleSession = this.sessions.slice(0)
         } else {
             this.visibleSession = this.sessions.filter(s => {
-                return s.level.toLocaleLowerCase() == this.filterBy
+                return s.level.toLocaleLowerCase() === this.filterBy
             })
         }               
     }
 
     sortSessions() {
-        if (this.sortBy === 'name')
+        if (this.sortBy === 'name') {
             this.visibleSession.sort(this.sortByName)  
-        else 
-            this.visibleSession.sort(this.sortByVotes)                  
+        } else {
+            this.visibleSession.sort(this.sortByVotes)    
+        }              
     }
 
     private sortByName(s1: ISession, s2: ISession): number {
-        if (s1.name > s2.name)
+        if (s1.name > s2.name) {
             return 1
-        else if (s1.name === s2.name)
+        } else if (s1.name === s2.name) {
             return 0
-        else 
+        } else {
             return -1
+        }
     }
 
     private sortByVotes(s1: ISession, s2: ISession): number {

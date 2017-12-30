@@ -14,10 +14,10 @@ import { Params } from '@angular/router/src/shared';
 })
 export class EventDetailsComponent implements OnInit {
 
-    event: IEvent
+    event: IEvent 
     addMode: boolean
-    filterBy: string = 'all'
-    sortBy: string = 'votes'
+    filterBy = 'all'
+    sortBy = 'votes'
 
     constructor(private eventService: EventService, 
                 private route: ActivatedRoute) {
