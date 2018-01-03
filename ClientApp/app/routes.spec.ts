@@ -117,7 +117,7 @@ describe('AppRoutes', () => {
     }))  
     
     it('navigate to "events/5" redirects to /events/5', fakeAsync(() => {
-        router.navigate(['/events/5']) 
+        router.navigate(['events/5']) 
             .then(v => {
                 console.log('/events/5') 
                 expect(location.path()).toBe('/events/5')
