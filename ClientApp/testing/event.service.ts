@@ -18,10 +18,14 @@ export class MockEventService {
     }
 
     getEvent(id: number): Observable<IEvent> {
-        return Observable.of(this.mockEvents[0])
+        const event = this.mockEvents.find(e => e.id === id)
+        return Observable.of(event)
     } 
     
-    saveEvent(event: IEvent): Observable<IEvent> {        
+    saveEvent(event: IEvent): Observable<IEvent> {   
+        const nextId = Math.max.apply(null, this.mockEvents.map(e => e.id))
+        event.id = nextId + 1
+        this.mockEvents.push(event)
         return Observable.of(event)
     }
 
