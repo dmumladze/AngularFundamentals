@@ -24,8 +24,8 @@ export class EventsListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.data.subscribe((e: any) => {
-            this.events = e.events;
+        this.route.data.subscribe((data: any) => {
+            this.events = data['events'];
         })
     }
 

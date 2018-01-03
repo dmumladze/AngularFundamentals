@@ -11,7 +11,7 @@ export interface IEvent {
         city: string
         country: string
     }
-    sessions: ISession[]
+    sessions?: ISession[]
 }
 
 export interface ISession {

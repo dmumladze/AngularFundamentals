@@ -8,7 +8,6 @@ import { AuthService } from '../../user/auth.service'
 import { VoterService } from '../services/voter.service'
 import { ISession } from '../services/event.model'
 import { By } from '@angular/platform-browser'
-import { debug } from 'util';
 
 describe('SessionListComponent', () => {
     let fixture: ComponentFixture<SessionListComponent>
