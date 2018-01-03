@@ -1,15 +1,24 @@
 import { Observable } from 'rxjs/Observable'
 
 import { IEvent, ISession } from '../app/events/index'
-import { mockEvents } from './event.data'
+
+import * as events from './events.json'
 
 export class MockEventService {
+
+    mockEvents: IEvent[] 
+
+    constructor() {
+        //const events = require('./events.json')
+        this.mockEvents = <any>events
+    }
+
     getEvents(): Observable<IEvent[]> {
-        return Observable.of(mockEvents)
+        return Observable.of(this.mockEvents)
     }
 
     getEvent(id: number): Observable<IEvent> {
-        return Observable.of(mockEvents[0])
+        return Observable.of(this.mockEvents[0])
     } 
     
     saveEvent(event: IEvent): Observable<IEvent> {        

@@ -20,7 +20,7 @@ namespace ng4play.Controllers
 
         static EventsController()
         {
-            var json = System.IO.File.ReadAllText(Path.Combine(Startup.ContentRootPath, "events.json"));
+            var json = System.IO.File.ReadAllText(Path.Combine(Startup.ContentRootPath, "ClientApp", "testing", "events.json"));
             EventData = JsonConvert.DeserializeObject<List<Event>>(json);
         }
 
