@@ -1,15 +1,25 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+
     "version": "2.0.0",
+    "command": "dotnet",
+    "args": [],
+    "options":  {
+        "cwd": "${workspaceRoot}/"
+    },
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet build ${workspaceFolder}/ng4play.csproj",
+            "args": [ ],
             "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "always"
+            "group": {
+                "kind": "build",
+                "isDefault": true
             },
+            "presentation": {
+                "reveal": "silent"
+            },            
             "problemMatcher": "$msCompile"
-        }
+        }        
     ]
 }
