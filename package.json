@@ -2,8 +2,10 @@
   "name": "ng2-fundamentals-demo",
   "version": "1.0.0",
   "scripts": {
-    "dotnet-watch": "dotnet build && set ASPNETCORE_ENVIRONMENT=Development && dotnet watch run",
-    "ng-serve": "ng serve --live-reload --proxy-config proxy.config.json"
+    "scripts": {
+      "dotnet-watch": "dotnet build && set ASPNETCORE_ENVIRONMENT=Development && dotnet watch run",
+      "dotnet-test": "dotnet watch test \"Tests.csproj\"",
+      "ng-serve": "ng serve --live-reload --proxy-config proxy.config.js"
   },
   "keywords": [],
   "author": "",
